@@ -173,7 +173,7 @@ If you don't want to develop a layout that uses the camera, you can ues the ESRC
 
 > Note: FrameLayout is just one of examples. You can change to other layout type to purpose your app.
 
-Bind the ESRC Fragment to display the image taken with the camera on the screen. ESRC Fragment send the image to the ESRC Face SDK in real-time to be able to recognize facial expression, heart response and emotion. ESRC Fragment automatically display the image to fit the size of your custom layout.
+Bind the ESRC Fragment to display the image taken with the camera on the screen. ESRC Fragment send the image to the ESRC Face SDK in real-time to be able to recognize facial action unit and facial expression. ESRC Fragment automatically display the image to fit the size of your custom layout.
 
 ```java
 // Bind LAYOUT.xml on your Activity.
@@ -187,7 +187,7 @@ getSupportFragmentManager().beginTransaction()
 
 ### Step 3: Start the ESRC Face SDK
 
-Start the ESRC Face SDK to recognize your facial action unit and facial expression. To the `start()` method, pass the `ENABLE_DRAW` parameters for whether to visualize the face bounding box and the `ESRC.ESRCHandler` to handle the results. You should implement the callback method of `ESRC.ESRCHandler` interface. So, you can receive the results of face, facial landmark, head pose, attention, facial expression, heart rate, heart rate variability and engagement. Please refer to **[sample app](https://github.com/esrc-official/ESRC-Face-Android)**.
+Start the ESRC Face SDK to recognize your facial action unit and facial expression. To the `start()` method, pass the `ENABLE_DRAW` parameters for whether to visualize the face bounding box and the `ESRC.ESRCHandler` to handle the results. You should implement the callback method of `ESRC.ESRCHandler` interface. So, you can receive the results of face, facial landmark, head pose, attention and facial expressios. Please refer to **[sample app](https://github.com/esrc-official/ESRC-Face-Android)**.
 
 ```java
 ESRC.start(ENABLE_DRAW, new ESRC.ESRCHandler() {
