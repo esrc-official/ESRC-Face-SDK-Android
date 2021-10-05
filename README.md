@@ -14,7 +14,7 @@
 
 ## About ESRC Face SDK
 
-Through our **ESRC Face SDK** for Android, you can efficiently integrate real-time recognition of facial action unit and facial expression into your mobile app. This and other pages in the Getting Started provide the ESRC SDK’s structure and installation steps, then goes through the preliminary steps of implementing the ESRC Face SDK in your own project.
+Through our **ESRC Face SDK** for Android, you can efficiently integrate real-time analysis of facial action unit and recognition of facial expression into your mobile app. This and other pages in the Getting Started provide the ESRC SDK’s structure and installation steps, then goes through the preliminary steps of implementing the ESRC Face SDK in your own project.
 
 ### Requirements
 
@@ -173,7 +173,7 @@ If you don't want to develop a layout that uses the camera, you can ues the ESRC
 
 > Note: FrameLayout is just one of examples. You can change to other layout type to purpose your app.
 
-Bind the ESRC Fragment to display the image taken with the camera on the screen. ESRC Fragment send the image to the ESRC Face SDK in real-time to be able to recognize facial action unit and facial expression. ESRC Fragment automatically display the image to fit the size of your custom layout.
+Bind the ESRC Fragment to display the image taken with the camera on the screen. ESRC Fragment send the image to the ESRC Face SDK in real-time to be able to analyze facial action unit and to recognize facial expression. ESRC Fragment automatically display the image to fit the size of your custom layout.
 
 ```java
 // Bind LAYOUT.xml on your Activity.
@@ -187,7 +187,7 @@ getSupportFragmentManager().beginTransaction()
 
 ### Step 3: Start the ESRC Face SDK
 
-Start the ESRC Face SDK to recognize your facial action unit and facial expression. To the `start()` method, pass the `ENABLE_DRAW` parameters for whether to visualize the face bounding box and the `ESRC.ESRCHandler` to handle the results. You should implement the callback method of `ESRC.ESRCHandler` interface. So, you can receive the results of face, facial landmark, head pose, attention and facial expressios. Please refer to **[sample app](https://github.com/esrc-official/ESRC-Face-Android)**.
+Start the ESRC Face SDK to analyze your facial action unit and recognize facial expression. To the `start()` method, pass the `ENABLE_DRAW` parameters for whether to visualize the face bounding box and the `ESRC.ESRCHandler` to handle the results. You should implement the callback method of `ESRC.ESRCHandler` interface. So, you can receive the results of face, facial landmark, head pose, attention and facial expressions. Please refer to **[sample app](https://github.com/esrc-official/ESRC-Face-Android)**.
 
 ```java
 ESRC.start(ENABLE_DRAW, new ESRC.ESRCHandler() {
