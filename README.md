@@ -44,6 +44,7 @@ android {
 
 |Function|Description|
 |---|---|
+|Measurement Environment Analysis| Analyze measurement environment including brightness. |
 |Face Detection| Detect a single face using a front camera on mobile. |
 |Facial Landmark Detection| Detect x and y coordinates of 68 facial landmarks in 2D space from the detected face. |
 |Facial Action Unit Analysis| Extract centroid, area, theta and R distance of each 39 facial action unit from the detected 68 facial landmarks based on Facial Action Coding System determined by Paul Ekman. |
@@ -113,7 +114,7 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation name: 'esrc-face-sdk-2.3.0', ext: 'aar'
+    implementation name: 'esrc-face-sdk-2.4.0', ext: 'aar'
 }
 ```
 
@@ -187,31 +188,38 @@ getSupportFragmentManager().beginTransaction()
 
 ### Step 3: Start the ESRC Face SDK
 
-Start the ESRC Face SDK to analyze your facial action unit and recognize facial expression. To the `start()` method, pass the `ENABLE_DRAW` parameters for whether to visualize the face bounding box and the `ESRC.ESRCHandler` to handle the results. You should implement the callback method of `ESRC.ESRCHandler` interface. So, you can receive the results of face, facial landmark, head pose, attention and facial expressions. Please refer to **[sample app](https://github.com/esrc-official/ESRC-Face-Android)**.
+Start the ESRC Face SDK to recognize your facial expression. To the `start()` method, pass the `ESRCType.Property` to select analysis modules and the `ESRC.ESRCHandler` to handle the results. You should implement the callback method of `ESRC.ESRCHandler` interface. So, you can receive the results of face, facial landmark, facial action unit, and facial expression. Please refer to **[sample app](https://github.com/esrc-official/ESRC-Face-Android)**.
 
 ```java
-ESRC.start(ENABLE_DRAW, new ESRC.ESRCHandler() {
-    @Override
-    public void onDetectedFace(ESRCTYPE.Face face, ESRCException e) {
-        if(e != null) {
-            // Handle error.
+ESRC.start(
+    new ESRCType.Property(
+        true,  // Whether visualize result or not. It is only valid If you bind the ESRC Fragment (i.e., Step 2).
+        true,  // Whether analyze measurement environment or not.
+        true,  // Whether detect face or not.
+        true,  // Whether detect facial landmark or not. If enableFace is false, it is also automatically set to false.
+        true,  // Whether analyze facial action unit or not. If enableFace or enableFacialLandmark is false, it is also automatically set to false.
+        true),  // Whether recognize facial expression or not. If enableFace is false, it is also automatically set to false.
+    new ESRC.ESRCHandler() {
+        @Override
+        public void onDetectedFace(ESRCTYPE.Face face, ESRCException e) {
+            if(e != null) {
+                // Handle error.
+            }
+            
+        // The face is detected.
+            // Through the “face” parameter of the onDetectedFace() callback method,
+            // you can get the location of the face from the result object
+            // that ESRC Face SDK has passed to the onDetectedFace().
+            …
         }
         
-	// The face is detected.
-        // Through the “face” parameter of the onDetectedFace() callback method,
-        // you can get the location of the face from the result object
-        // that ESRC Face SDK has passed to the onDetectedFace().
-        …
-    }
-    
-    // Please implement other callback method of ESRC.ESRCHandler interface.
-    @Override public void onNotDetectedFace( … ) { … }
-    @Override public void onDetectedFacialLandmark( … ) { … }
-    @Override public void onAnalyzedFacialActionUnit( … ) { … }
-    @Override public void onRecognizedFacialExpression( … ) { … }
-    @Override public void onEstimatedHeadPose( … ) { … }
-    @Override public void onRecognizedAttention( … ) { … }    
-});
+        // Please implement other callback method of ESRC.ESRCHandler interface.
+        @Override public void onNotDetectedFace( … ) { … }
+        @Override public void onAnalyzedMeasureEnv( … ) { … }
+        @Override public void onDetectedFacialLandmark( … ) { … }
+        @Override public void onAnalyzedFacialActionUnit( … ) { … }
+        @Override public void onRecognizedFacialExpression( … ) { … }        
+    });
 ```
 
 ### (Optional) Step 4: Feed the ESRC Face SDK
