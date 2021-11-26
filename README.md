@@ -38,8 +38,6 @@ android {
 }
 ```
 
-<br />
-
 ### Key functions
 
 |Function|Description|
@@ -52,14 +50,13 @@ android {
 |Head Pose Estimation| `(Coming Soon)` Estimate x, y and z angles of head pose in 3D space from the detected facial landmarks. |
 |Attention Recognition| `(Coming Soon)` Recognize attention based on whether you are looking straight from head pose. |
 
-<br />
-
 ### Try the sample app
 
 Our sample app has the core features of the ESRC Face SDK. Download the app from our [GitHub repository](https://github.com/esrc-official/ESRC-Face-Android) to get an idea of what you can build with the actual SDK and start building in your project.
 
 > Note: The fastest way to see our ESRC Face SDK in action is to build your app on top of our sample app. Make sure to change the application ID of the sample app to your own.
 
+<br />
 
 ## Install ESRC Face SDK
 
