@@ -32,3 +32,6 @@
  - Add callback of measurement environment analysis.
  - Add class variable for confidence level to ESRCType.Face.
  - Add property when the SDK is started.
+
+### 2.4.1 (December 08, 2021)
+ - Improve procedure for validation of license key.
