@@ -34,7 +34,6 @@
  - Add property when the SDK is started.
 
 ### 2.4.1 (December 08, 2021)
-<<<<<<< HEAD
  - Improve procedure for validation of license key.
 
 ### 2.4.4 (March 07, 2022)
