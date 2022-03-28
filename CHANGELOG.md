@@ -27,3 +27,15 @@
  
 ### 2.3.0 (September 30, 2021)
  - Extract ESRC Face SDK.
+
+### 2.4.0 (November 01, 2021)
+ - Add callback of measurement environment analysis.
+ - Add class variable for confidence level to ESRCType.Face.
+ - Add property when the SDK is started.
+
+### 2.4.1 (December 08, 2021)
+ - Improve procedure for validation of license key.
+
+### 2.4.4 (March 07, 2022)
+ - Change facial expression recognition to basic facial expression recognition.
+ - Add valence facial expression recognition.
