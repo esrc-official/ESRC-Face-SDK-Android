@@ -115,7 +115,7 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation name: 'esrc-face-sdk-2.4.1', ext: 'aar'
+    implementation name: 'esrc-face-sdk-2.4.5', ext: 'aar'
 }
 ```
 
