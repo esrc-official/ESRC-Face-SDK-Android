@@ -46,7 +46,8 @@ android {
 |Face Detection| Detect a single face using a front camera on mobile. |
 |Facial Landmark Detection| Detect x and y coordinates of 68 facial landmarks in 2D space from the detected face. |
 |Facial Action Unit Analysis| Extract centroid, area, theta and R distance of each 39 facial action unit from the detected 68 facial landmarks based on Facial Action Coding System determined by Paul Ekman. |
-|Facial Expression Recognition| Recognize 7 facial expressions consist of neutral, happiness, sad-ness, surprise, anger, disgust and fear based on 6 basic emotions. |
+|Basic Facial Expression Recognition| Recognize 7 facial expressions consist of neutral, happiness, sadness, surprise, anger, disgust and fear based on 6 basic emotions. |
+|Valence Facial Expression Recognition| Recognize 3 facial expressions consist of neutral, positive and negative based on valence of two-dimensional emotion. |
 |Head Pose Estimation| `(Coming Soon)` Estimate x, y and z angles of head pose in 3D space from the detected facial landmarks. |
 |Attention Recognition| `(Coming Soon)` Recognize attention based on whether you are looking straight from head pose. |
 
@@ -115,7 +116,7 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation name: 'esrc-face-sdk-2.4.5', ext: 'aar'
+    implementation name: 'esrc-face-sdk-2.4.6', ext: 'aar'
 }
 ```
 
@@ -199,10 +200,11 @@ ESRC.start(
         true,  // Whether detect face or not.
         true,  // Whether detect facial landmark or not. If enableFace is false, it is also automatically set to false.
         true,  // Whether analyze facial action unit or not. If enableFace or enableFacialLandmark is false, it is also automatically set to false.
-        true),  // Whether recognize facial expression or not. If enableFace is false, it is also automatically set to false.
+        true,  // Whether recognize basic facial expression or not. If enableFace is false, it is also automatically set to false.
+        true),  // Whether recognize valence facial expression or not. If enableFace is false, it is also automatically set to false.
     new ESRC.ESRCHandler() {
         @Override
-        public void onDetectedFace(ESRCTYPE.Face face, ESRCException e) {
+        public void onDetectedFace(ESRCType.Face face, ESRCException e) {
             if(e != null) {
                 // Handle error.
             }
@@ -215,17 +217,17 @@ ESRC.start(
         }
         
         // Please implement other callback method of ESRC.ESRCHandler interface.
-        @Override public void onNotDetectedFace( … ) { … }
         @Override public void onAnalyzedMeasureEnv( … ) { … }
         @Override public void onDetectedFacialLandmark( … ) { … }
         @Override public void onAnalyzedFacialActionUnit( … ) { … }
-        @Override public void onRecognizedFacialExpression( … ) { … }        
+        @Override public void onRecognizedBasicFacialExpression( … ) { … }
+        @Override public void onRecognizedValenceFacialExpression( … ) { … }        
     });
 ```
 
 ### (Optional) Step 4: Feed the ESRC Face SDK
 
-Feed `OpenCV Mat` on the ESRC Face SDK. To the `feed()` method, pass the `Mat` image received using a camera in real-time. Please do it at 10 fps. You can skip this step if you follow Step 2: Bind the ESRC Fragment.
+Feed `Mat` on the ESRC Face SDK. To the `feed()` method, pass the `Mat` image received using a camera in real-time. Please do it at 10 fps. You can skip this step if you follow Step 2: Bind the ESRC Fragment.
 
 ```java
 ESRC.feed(Mat);
