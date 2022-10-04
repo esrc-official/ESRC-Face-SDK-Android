@@ -47,3 +47,6 @@
  - Change some ESRCType class constant to class enum (basic facial expression, valence facial expression, and engagement).
  - Remove onNotDetectedFace callback method -> Add isDetect parameter in ESRCType.Face class.
  - Add identification parameter in all ESRCType class.
+
+### 2.5.4 (October 04, 2022)
+ - Improve facial action unit analysis.
