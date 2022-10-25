@@ -53,3 +53,6 @@
 
 ### 2.5.5 (October 12, 2022)
  - Improve size correction of facial landmark detection.
+
+### 2.5.7 (October 25, 2022) 
+ - Improve ESRCFragment for display rotation.
