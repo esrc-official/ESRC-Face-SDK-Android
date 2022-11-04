@@ -56,3 +56,6 @@
 
 ### 2.5.7 (October 25, 2022) 
  - Improve ESRCFragment for display rotation.
+
+### 2.5.8 (November 04, 2022)
+ - Improve procedure for validation of license key.
